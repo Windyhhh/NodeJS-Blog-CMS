@@ -1,31 +1,57 @@
-# 📝 Node.js 博客内容管理系统 | Node.js Blog CMS
+# 📝 Node.js 博客系统 | Node.js Blog CMS
 
-> **基于 Express + EJS + SQLite 的轻量级博客系统，支持用户注册登录、文章发布、分类管理。**
+> **基于 Node.js 的完整博客内容管理系统——Express + EJS + SQLite，用户认证、文章发布、分类管理、评论互动，开箱即用。**
 >
-> *A lightweight blog system built with Express + EJS + SQLite, supporting user registration/login, post publishing, and category management.*
+> *Complete blog content management system based on Node.js — Express + EJS + SQLite, user authentication, article publishing, category management, comment interaction, ready to use.*
 
 ---
 
-## 📌 项目简介 | Overview
+## ⭐ 核心卖点 | Why Star This
 
-一个功能完整的 Node.js 博客内容管理系统，采用经典的 MVC 架构。前端使用 EJS 模板引擎，后端基于 Express 框架，数据存储采用 SQLite 轻量级数据库。系统支持用户注册登录、文章发布与管理、分类管理等核心功能，并附带完整的部署文档。
-
-A fully functional Node.js blog content management system using classic MVC architecture. The frontend uses EJS template engine, the backend is based on Express framework, and data storage uses SQLite lightweight database. The system supports user registration/login, post publishing and management, category management, and comes with complete deployment documentation.
+| 卖点 | Feature | 一句话 |
+|------|---------|--------|
+| 🚀 **Node.js 开发** | Node.js | Express 高性能 Web 框架 |
+| 🔐 **用户认证** | Authentication | 注册、登录、会话管理 |
+| 📝 **文章管理** | Article Management | 文章发布、编辑、删除 |
+| 🏷️ **分类管理** | Category Management | 文章分类、标签体系 |
+| 💬 **评论互动** | Comment System | 读者评论互动 |
 
 ---
 
-## ✨ 核心特性 | Features
+## 🏆 技术栈 | Tech Stack
 
-| 特性 | Feature | 说明 |
-|------|---------|------|
-| 👤 用户认证 | User Auth | 注册、登录、会话管理 |
-| ✍️ 文章管理 | Post Management | 创建、编辑、删除、查看文章 |
-| 📂 分类管理 | Category Management | 文章分类创建与管理 |
-| 🎨 EJS 模板 | EJS Templates | 服务端渲染，SEO 友好 |
-| 💾 SQLite 数据库 | SQLite Database | 轻量级文件数据库，无需额外服务 |
-| 🔐 密码加密 | Password Hashing | bcrypt 密码安全存储 |
-| 📱 响应式设计 | Responsive Design | 适配桌面和移动端 |
-| 🚀 一键部署 | One-Click Deploy | 附带部署脚本和文档 |
+![Node.js](https://img.shields.io/badge/Node.js-18+-green?logo=nodedotjs)
+![Express](https://img.shields.io/badge/Express-4.0+-black?logo=express)
+![EJS](https://img.shields.io/badge/EJS-3.0+-yellow?logo=ejs)
+![SQLite](https://img.shields.io/badge/SQLite-3.0+-blue?logo=sqlite)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-4.0+-purple?logo=bootstrap)
+![Passport](https://img.shields.io/badge/Passport-0.6+-green?logo=passport)
+
+---
+
+## 🚀 快速开始 | Quick Start
+
+```bash
+git clone https://github.com/Windyhhh/NodeJS-Blog-CMS.git
+cd NodeJS-Blog-CMS
+
+# 1. 安装依赖
+npm install
+
+# 2. 配置环境
+cp .env.example .env
+# 编辑 .env，配置数据库、会话密钥
+
+# 3. 初始化数据库
+npm run db:init
+
+# 4. 启动开发服务器
+npm run dev
+
+# 5. 访问
+# 博客: http://localhost:3000
+# 管理后台: http://localhost:3000/admin
+```
 
 ---
 
@@ -33,129 +59,78 @@ A fully functional Node.js blog content management system using classic MVC arch
 
 ```
 NodeJS-Blog-CMS/
-├── package.json                     # 项目配置
-├── package-lock.json                # 依赖锁定
-├── README.md                        # 项目说明
-├── 博客要求                         # 需求文档
-├── deploy/                          # 部署目录
-│   ├── deploy-to-server.md          # 服务器部署指南
-│   ├── install.bat                  # Windows 安装脚本
-│   └── README.md                    # 部署说明
-└── src/                             # 源代码
-    ├── index.js                     # 应用入口
-    ├── database/                    # 数据库层
-    │   ├── init.js                  # 数据库初始化
-    │   ├── init.sql                 # 建表 SQL
-    │   └── jsondb.js               # JSON 数据库（备选）
-    ├── models/                      # 数据模型
-    │   ├── User.js                  # 用户模型
-    │   ├── Post.js                  # 文章模型
-    │   └── Category.js              # 分类模型
-    ├── routes/                      # 路由层
-    │   ├── auth.js                  # 认证路由
-    │   ├── posts.js                 # 文章路由
-    │   └── categories.js            # 分类路由
-    ├── views/                       # 视图层 (EJS)
-    │   ├── layouts/
-    │   │   └── main.ejs             # 主布局
-    │   └── pages/
-    │       ├── index.ejs            # 首页
-    │       ├── 404.ejs              # 404 页面
-    │       ├── error.ejs            # 错误页面
-    │       ├── auth/
-    │       │   ├── login.ejs        # 登录页
-    │       │   └── register.ejs     # 注册页
-    │       └── posts/
-    │           ├── create.ejs       # 创建文章
-    │           ├── detail.ejs       # 文章详情
-    │           ├── list.ejs         # 文章列表
-    │           └── list_simple.ejs  # 简洁列表
-    └── public/                      # 静态资源
-        ├── css/style.css            # 样式文件
-        ├── js/main.js               # 前端脚本
-        └── images/                  # 图片资源
+├── src/                       # 源码
+│   ├── app.js                # 应用入口
+│   ├── config/               # 配置
+│   ├── models/               # 数据模型
+│   │   ├── user.js
+│   │   ├── post.js
+│   │   └── category.js
+│   ├── routes/               # 路由
+│   │   ├── index.js
+│   │   ├── auth.js
+│   │   ├── posts.js
+│   │   └── admin.js
+│   ├── controllers/          # 控制器
+│   ├── middleware/           # 中间件
+│   └── views/                # EJS 视图
+├── public/                   # 静态资源
+├── .env.example
+├── package.json
+└── README.md
 ```
 
 ---
 
-## 🚀 快速开始 | Quick Start
+## 🔬 核心实现 | Core Implementation
 
-### 环境要求 | Requirements
+### 认证与文章模块 | Auth & Post Module
 
-- Node.js >= 14.0.0
-- npm >= 6.0.0
+```javascript
+// 用户认证 (Passport)
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcryptjs');
 
-### 安装依赖 | Install Dependencies
+passport.use(new LocalStrategy(
+  async (username, password, done) => {
+    const user = await User.findByUsername(username);
+    if (!user) return done(null, false, { message: '用户不存在' });
+    
+    const valid = await bcrypt.compare(password, user.password);
+    if (!valid) return done(null, false, { message: '密码错误' });
+    
+    return done(null, user);
+  }
+));
 
-```bash
-npm install
+// 文章发布
+router.post('/posts', ensureAuth, async (req, res) => {
+  const { title, content, category, tags } = req.body;
+  const post = await Post.create({
+    title, content, category, tags,
+    author: req.user.id,
+    slug: slugify(title)
+  });
+  res.redirect(`/posts/${post.slug}`);
+});
 ```
-
-### 初始化数据库 | Initialize Database
-
-```bash
-node src/database/init.js
-```
-
-### 启动服务 | Start Server
-
-```bash
-node src/index.js
-```
-
-服务默认运行在 `http://localhost:3000`
 
 ---
 
-## 🔧 技术栈 | Tech Stack
+## 🎯 应用场景 | Use Cases
 
-| 层级 | 技术 | 说明 |
-|------|------|------|
-| 运行时 | Node.js | JavaScript 服务端运行时 |
-| 框架 | Express | 轻量级 Web 框架 |
-| 模板引擎 | EJS | 嵌入式 JavaScript 模板 |
-| 数据库 | SQLite | 轻量级关系型数据库 |
-| 密码加密 | bcrypt | 安全密码哈希 |
-| 会话管理 | express-session | 用户会话管理 |
-| 前端 | 原生 CSS/JS | 无框架依赖，轻量高效 |
-
----
-
-## 📖 API 路由 | API Routes
-
-| 方法 | 路径 | 功能 |
-|------|------|------|
-| GET | `/` | 首页 |
-| GET | `/auth/login` | 登录页面 |
-| POST | `/auth/login` | 提交登录 |
-| GET | `/auth/register` | 注册页面 |
-| POST | `/auth/register` | 提交注册 |
-| GET | `/auth/logout` | 退出登录 |
-| GET | `/posts` | 文章列表 |
-| GET | `/posts/:id` | 文章详情 |
-| GET | `/posts/create` | 创建文章（需登录） |
-| POST | `/posts` | 提交文章（需登录） |
-| GET | `/categories` | 分类列表 |
-| POST | `/categories` | 创建分类（需登录） |
-
----
-
-## 🚀 部署 | Deployment
-
-项目附带完整的部署文档和脚本：
-
-```bash
-# Windows 一键安装
-deploy\install.bat
-
-# 查看部署指南
-deploy\deploy-to-server.md
-```
-
-支持部署到 Windows Server、Linux 服务器等多种环境。
+- 📝 **个人博客**：快速搭建个人博客
+- 🏢 **内容网站**：企业内容管理
+- 🎓 **Node.js 教学**：全栈 Web 开发项目
+- 💼 **作品集**：Node.js 全栈作品
 
 ---
 
 ## 📄 License
 
 MIT License — 自由使用、修改和分发。
+
+---
+
+> 💡 **Node.js 完整博客系统，Star ⭐ 快速搭建你的内容平台！**
