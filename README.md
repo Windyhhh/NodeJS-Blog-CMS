@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📝 NodeJS-Blog-CMS
+# Node.js 博客 CMS | NodeJS-Blog-CMS
 
 ### A Node.js blog content-management system.
 
